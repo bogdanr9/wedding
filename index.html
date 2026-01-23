@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Andrei & Maria</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #111;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      font-weight: 300;
+      letter-spacing: 2px;
+    }
+
+    .date {
+      margin: 20px 0;
+      font-size: 16px;
+      color: #555;
+    }
+
+    .lang-switch {
+      text-align: right;
+      font-size: 14px;
+    }
+
+    .lang-switch button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      margin-left: 10px;
+    }
+
+    form {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+
+    button {
+      background: #111;
+      color: #fff;
+      border: none;
+      margin-top: 20px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="lang-switch">
+      <button onclick="setLang('ro')">RO</button>
+      <button onclick="setLang('en')">EN</button>
+    </div>
+
+    <h1 id="title">Andrei & Maria</h1>
+    <p class="date" id="subtitle">
+      20 iunie 2026 · București
+    </p>
+
+    <p id="intro">
+      Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.
+    </p>
+
+    <form>
+      <label id="nameLabel">Nume și prenume</label>
+      <input type="text" required>
+
+      <label id="attendLabel">Veți participa?</label>
+      <select>
+        <option>Da</option>
+        <option>Nu</option>
+      </select>
+
+      <label id="guestsLabel">Număr de persoane</label>
+      <input type="number" min="1">
+
+      <label id="menuLabel">Preferință meniu</label>
+      <select>
+        <option>Standard</option>
+        <option>Vegetarian</option>
+        <option>Copil</option>
+      </select>
+
+      <label id="messageLabel">Mesaj pentru miri</label>
+      <textarea rows="3"></textarea>
+
+      <button type="submit" id="submitBtn">Confirmă prezența</button>
+    </form>
+
+    <footer id="footerText">
+      Vă rugăm să confirmați până la 1 iunie 2026
+    </footer>
+
+  </div>
+
+  <script>
+    const translations = {
+      ro: {
+        intro: "Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.",
+        name: "Nume și prenume",
+        attend: "Veți participa?",
+        guests: "Număr de persoane",
+        menu: "Preferință meniu",
+        message: "Mesaj pentru miri",
+        submit: "Confirmă prezența",
+        footer: "Vă rugăm să confirmați până la 1 iunie 2026"
+      },
+      en: {
+        intro: "With great joy, we invite you to celebrate our wedding day with us.",
+        name: "Full name",
+        attend: "Will you attend?",
+        guests: "Number of guests",
+        menu: "Menu preference",
+        message: "Message for the couple",
+        submit: "Confirm attendance",
+        footer: "Please confirm by June 1st, 2026"
+      }
+    };
+
+    function setLang(lang) {
+      document.getElementById("intro").innerText = translations[lang].intro;
+      document.getElementById("nameLabel").innerText = translations[lang].name;
+      document.getElementById("attendLabel").innerText = translations[lang].attend;
+      document.getElementById("guestsLabel").innerText = translations[lang].guests;
+      document.getElementById("menuLabel").innerText = translations[lang].menu;
+      document.getElementById("messageLabel").innerText = translations[lang].message;
+      document.getElementById("submitBtn").innerText = translations[lang].submit;
+      document.getElementById("footerText").innerText = translations[lang].footer;
+    }
+  </script>
+</body>
+</html>
