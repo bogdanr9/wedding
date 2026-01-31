@@ -13,34 +13,76 @@ body {
 }
 
 /* HERO */
+<div class="hero">
+  <div class="hero-content">
+    <h1>Bogdan & Irina</h1>
+    <p>30 mai 2026 · București</p>
+  </div>
+</div>
+
+<style>
 .hero {
   height: 100vh;
-  background: url("hero.jpg") center center/contain no-repeat;
+  background: url("hero.jpg") center/cover no-repeat; /* imagine verticală full screen */
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow: hidden;
 }
+
+/* Overlay pentru contrast */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background: rgba(0, 0, 0, 0.5); /* mai vizibil pentru text */
+  z-index: 0;
 }
+
+/* Text peste imagine */
 .hero-content {
   position: relative;
   z-index: 1;
   text-align: center;
   color: #fff;
+  transition: all 0.3s ease;
 }
+
 .hero-content h1 {
   font-size: 48px;
   font-weight: 300;
   letter-spacing: 4px;
+  margin: 0;
+  transition: all 0.3s ease;
 }
+
 .hero-content p {
   letter-spacing: 2px;
+  margin-top: 10px;
+  transition: all 0.3s ease;
 }
+
+/* Hover effect peste text */
+.hero-content:hover h1 {
+  transform: scale(1.05); /* ușor zoom */
+  text-shadow: 0 0 15px rgba(255,255,255,0.9); /* glow */
+}
+
+.hero-content:hover p {
+  text-shadow: 0 0 12px rgba(255,255,255,0.9); /* glow */
+}
+
+/* Responsive text */
+@media (max-width: 768px) {
+  .hero-content h1 {
+    font-size: 36px;
+  }
+  .hero-content p {
+    font-size: 18px;
+  }
+}
+</style>
 
 /* MAIN */
 .container {
