@@ -17,7 +17,7 @@
     /* HERO */
     .hero {
       height: 80vh;
-      background: url("hero.jpeg") center / cover no-repeat;
+      background: url("hero.jpg") center / cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -75,6 +75,30 @@
       margin-top: 20px;
       font-size: 16px;
       color: #444;
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 0;
+      text-align: center;
+    }
+
+    .countdown div {
+      flex: 1;
+    }
+
+    .countdown span {
+      display: block;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .countdown small {
+      font-size: 12px;
+      color: #666;
+      letter-spacing: 1px;
     }
 
     form {
@@ -135,6 +159,26 @@
       Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.
     </p>
 
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+      <div>
+        <span id="days">0</span>
+        <small>ZILE</small>
+      </div>
+      <div>
+        <span id="hours">0</span>
+        <small>ORE</small>
+      </div>
+      <div>
+        <span id="minutes">0</span>
+        <small>MIN</small>
+      </div>
+      <div>
+        <span id="seconds">0</span>
+        <small>SEC</small>
+      </div>
+    </div>
+
     <form>
       <label id="nameLabel">Nume și prenume</label>
       <input type="text" required>
@@ -170,6 +214,7 @@
   </div>
 
   <script>
+    /* TRANSLATIONS */
     const translations = {
       ro: {
         intro: "Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.",
@@ -203,6 +248,25 @@
       document.getElementById("submitBtn").innerText = translations[lang].submit;
       document.getElementById("footerText").innerText = translations[lang].footer;
     }
+
+    /* COUNTDOWN */
+    const weddingDate = new Date("May 30, 2026 00:00:00").getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = weddingDate - now;
+
+      if (distance < 0) return;
+
+      document.getElementById("days").innerText =
+        Math.floor(distance / (1000 * 60 * 60 * 24));
+      document.getElementById("hours").innerText =
+        Math.floor((distance / (1000 * 60 * 60)) % 24);
+      document.getElementById("minutes").innerText =
+        Math.floor((distance / (1000 * 60)) % 60);
+      document.getElementById("seconds").innerText =
+        Math.floor((distance / 1000) % 60);
+    }, 1000);
   </script>
 
 </body>
