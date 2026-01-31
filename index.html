@@ -1,369 +1,301 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Bogdan & Irina</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bogdan & Irina</title>
 
-  <style>
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      margin: 0;
-      color: #111;
-    }
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  color: #111;
+}
 
-    /* HERO FULL SCREEN */
-    .hero {
-      height: 100vh;
-      width: 100%;
-      background: url("hero.jpg") center center / cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
+/* HERO */
+.hero {
+  height: 100vh;
+  background: url("hero.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  color: #fff;
+}
+.hero-content h1 {
+  font-size: 48px;
+  font-weight: 300;
+  letter-spacing: 4px;
+}
+.hero-content p {
+  letter-spacing: 2px;
+}
 
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-    }
+/* MAIN */
+.container {
+  max-width: 600px;
+  margin: auto;
+  padding: 50px 20px;
+}
 
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: #fff;
-    }
+.lang-switch {
+  text-align: right;
+}
+.lang-switch button {
+  background: none;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+}
 
-    .hero-content h1 {
-      font-size: 48px;
-      font-weight: 300;
-      letter-spacing: 4px;
-      margin: 0;
-    }
+/* COUNTDOWN */
+.countdown {
+  display: flex;
+  justify-content: space-between;
+  margin: 40px 0;
+  text-align: center;
+}
+.countdown span {
+  font-size: 28px;
+  font-weight: bold;
+}
 
-    .hero-content p {
-      margin-top: 15px;
-      font-size: 16px;
-      letter-spacing: 2px;
-    }
-
-    /* MAIN */
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 50px 20px;
-      text-align: center;
-    }
-
-    .lang-switch {
-      text-align: right;
-      font-size: 14px;
-    }
-
-    .lang-switch button {
-      background: none;
-      border: none;
-      cursor: pointer;
-      margin-left: 10px;
-      font-weight: bold;
-    }
-
-    #intro {
-      margin-top: 20px;
-      color: #444;
-    }
-
-    /* COUNTDOWN */
-    .countdown {
-      display: flex;
-      justify-content: space-between;
-      margin: 40px 0;
-    }
-
-    .countdown div {
-      flex: 1;
-    }
-
-    .countdown span {
-      font-size: 28px;
-      font-weight: bold;
-      display: block;
-    }
-
-    .countdown small {
-      font-size: 12px;
-      letter-spacing: 1px;
-      color: #666;
-    }
-
-    /* FORM */
-    form {
-      text-align: left;
-      margin-top: 40px;
-    }
-
-    label {
-      display: block;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    input, select, textarea, button {
-      width: 100%;
-      padding: 10px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      font-size: 14px;
-    }
-
-    button {
-      background: #111;
-      color: #fff;
-      border: none;
-      margin-top: 30px;
-      cursor: pointer;
-    }
-
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #777;
-      text-align: center;
-    }
-  </style>
+/* FORM */
+label {
+  display: block;
+  margin-top: 20px;
+}
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border: 1px solid #ccc;
+}
+button {
+  background: #111;
+  color: #fff;
+  margin-top: 30px;
+  cursor: pointer;
+}
+footer {
+  margin-top: 40px;
+  text-align: center;
+  color: #777;
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-content">
-      <h1>Bogdan & Irina</h1>
-      <p>30 mai 2026 · București</p>
-    </div>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Bogdan & Irina</h1>
+    <p>30 mai 2026 · București</p>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+
+  <div class="lang-switch">
+    <button onclick="setLang('ro')">RO</button>
+    <button onclick="setLang('en')">EN</button>
   </div>
 
-  <!-- CONTENT -->
-  <div class="container">
+  <p id="intro">
+    Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.
+  </p>
 
-    <div class="lang-switch">
-      <button onclick="setLang('ro')">RO</button>
-      <button onclick="setLang('en')">EN</button>
-    </div>
-
-    <p id="intro">
-      Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.
-    </p>
-
-    <!-- COUNTDOWN -->
-    <div class="countdown">
-      <div><span id="days">0</span><small>ZILE</small></div>
-      <div><span id="hours">0</span><small>ORE</small></div>
-      <div><span id="minutes">0</span><small>MIN</small></div>
-      <div><span id="seconds">0</span><small>SEC</small></div>
-    </div>
-
-    <!-- FORM -->
-    <form>
-      <form id="rsvpForm">
-      <label id="nameLabel">Nume și prenume</label>
-      <input type="text" required>
-
-      <label id="attendLabel">Veți participa?</label>
-      <select id="attendSelect">
-        <option value="yes">Da</option>
-        <option value="no">Nu</option>
-      </select>
-
-      <label id="guestsLabel">Număr de persoane</label>
-      <input type="number" min="1" id="guestsInput">
-
-      <label id="menuLabel" style="display:none">Preferință meniu</label>
-      <div id="menuContainer"></div>
-
-      <label id="messageLabel">Mesaj pentru miri</label>
-      <textarea rows="3"></textarea>
-
-      <button type="submit" id="submitBtn">
-        Confirmă prezența
-      </button>
-    </form>
-
-    <footer id="footerText">
-      Vă rugăm să confirmați până la 1 mai 2026
-    </footer>
-
+  <!-- COUNTDOWN -->
+  <div class="countdown">
+    <div><span id="days">0</span><br>ZILE</div>
+    <div><span id="hours">0</span><br>ORE</div>
+    <div><span id="minutes">0</span><br>MIN</div>
+    <div><span id="seconds">0</span><br>SEC</div>
   </div>
 
-  <!-- SCRIPT -->
- <script>
-  // ELEMENTS
-  const intro = document.getElementById("intro");
-  const nameLabel = document.getElementById("nameLabel");
-  const attendLabel = document.getElementById("attendLabel");
-  const guestsLabel = document.getElementById("guestsLabel");
-  const menuLabel = document.getElementById("menuLabel");
-  const messageLabel = document.getElementById("messageLabel");
-  const submitBtn = document.getElementById("submitBtn");
-  const footerText = document.getElementById("footerText");
+  <!-- FORM -->
+  <form id="rsvpForm">
 
-  const attendSelect = document.getElementById("attendSelect");
-  const guestsInput = document.getElementById("guestsInput");
-  const menuContainer = document.getElementById("menuContainer");
+    <label id="nameLabel">Nume și prenume</label>
+    <input type="text" id="nameInput" required>
 
-  const daysEl = document.getElementById("days");
-  const hoursEl = document.getElementById("hours");
-  const minutesEl = document.getElementById("minutes");
-  const secondsEl = document.getElementById("seconds");
+    <label id="attendLabel">Veți participa?</label>
+    <select id="attendSelect">
+      <option value="yes">Da</option>
+      <option value="no">Nu</option>
+    </select>
 
-  let currentLang = "ro";
+    <label id="guestsLabel">Număr de persoane</label>
+    <input type="number" min="1" id="guestsInput">
 
-  // TRANSLATIONS
-  const translations = {
-    ro: {
-      intro: "Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.",
-      name: "Nume și prenume",
-      attend: "Veți participa?",
-      yes: "Da",
-      no: "Nu",
-      guests: "Număr de persoane",
-      menu: "Preferință meniu",
-      menuPerson: "Meniu persoana",
-      standard: "Standard",
-      vegetarian: "Vegetarian",
-      child: "Copil",
-      message: "Mesaj pentru miri",
-      submit: "Confirmă prezența",
-      footer: "Vă rugăm să confirmați până la 1 mai 2026"
-    },
-    en: {
-      intro: "With great joy, we invite you to celebrate our wedding day with us.",
-      name: "Full name",
-      attend: "Will you attend?",
-      yes: "Yes",
-      no: "No",
-      guests: "Number of guests",
-      menu: "Menu preference",
-      menuPerson: "Menu guest",
-      standard: "Standard",
-      vegetarian: "Vegetarian",
-      child: "Child",
-      message: "Message for the couple",
-      submit: "Confirm attendance",
-      footer: "Please confirm by May 1st, 2026"
-    }
-  };
+    <label id="menuLabel" style="display:none">Preferință meniu</label>
+    <div id="menuContainer"></div>
 
-  function setLang(lang) {
-    currentLang = lang;
-    const t = translations[lang];
+    <label id="messageLabel">Mesaj pentru miri</label>
+    <textarea id="messageInput" rows="3"></textarea>
 
-    intro.innerText = t.intro;
-    nameLabel.innerText = t.name;
-    attendLabel.innerText = t.attend;
-    guestsLabel.innerText = t.guests;
-    menuLabel.innerText = t.menu;
-    messageLabel.innerText = t.message;
-    submitBtn.innerText = t.submit;
-    footerText.innerText = t.footer;
+    <button type="submit" id="submitBtn">Confirmă prezența</button>
+  </form>
 
-    attendSelect.options[0].text = t.yes;
-    attendSelect.options[1].text = t.no;
+  <footer id="footerText">
+    Vă rugăm să confirmați până la 1 mai 2026
+  </footer>
 
-    generateMenus();
+</div>
+
+<script>
+/* TRANSLATIONS */
+const translations = {
+  ro: {
+    intro: "Cu mare bucurie vă invităm să fiți alături de noi în ziua nunții noastre.",
+    name: "Nume și prenume",
+    attend: "Veți participa?",
+    yes: "Da",
+    no: "Nu",
+    guests: "Număr de persoane",
+    menu: "Preferință meniu",
+    menuPerson: "Meniu persoana",
+    standard: "Standard",
+    vegetarian: "Vegetarian",
+    child: "Copil",
+    message: "Mesaj pentru miri",
+    submit: "Confirmă prezența",
+    footer: "Vă rugăm să confirmați până la 1 mai 2026"
+  },
+  en: {
+    intro: "With great joy, we invite you to celebrate our wedding day with us.",
+    name: "Full name",
+    attend: "Will you attend?",
+    yes: "Yes",
+    no: "No",
+    guests: "Number of guests",
+    menu: "Menu preference",
+    menuPerson: "Menu guest",
+    standard: "Standard",
+    vegetarian: "Vegetarian",
+    child: "Child",
+    message: "Message for the couple",
+    submit: "Confirm attendance",
+    footer: "Please confirm by May 1st, 2026"
+  }
+};
+
+let currentLang = "ro";
+
+/* ELEMENTS */
+const intro = document.getElementById("intro");
+const nameLabel = document.getElementById("nameLabel");
+const attendLabel = document.getElementById("attendLabel");
+const guestsLabel = document.getElementById("guestsLabel");
+const menuLabel = document.getElementById("menuLabel");
+const messageLabel = document.getElementById("messageLabel");
+const submitBtn = document.getElementById("submitBtn");
+const footerText = document.getElementById("footerText");
+
+const attendSelect = document.getElementById("attendSelect");
+const guestsInput = document.getElementById("guestsInput");
+const menuContainer = document.getElementById("menuContainer");
+
+/* LANGUAGE */
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  intro.innerText = t.intro;
+  nameLabel.innerText = t.name;
+  attendLabel.innerText = t.attend;
+  guestsLabel.innerText = t.guests;
+  menuLabel.innerText = t.menu;
+  messageLabel.innerText = t.message;
+  submitBtn.innerText = t.submit;
+  footerText.innerText = t.footer;
+  attendSelect.options[0].text = t.yes;
+  attendSelect.options[1].text = t.no;
+  generateMenus();
+}
+
+/* MENUS */
+function generateMenus() {
+  menuContainer.innerHTML = "";
+  menuLabel.style.display = "none";
+  if (attendSelect.value !== "yes") return;
+
+  const count = parseInt(guestsInput.value);
+  if (!count) return;
+
+  menuLabel.style.display = "block";
+  for (let i = 1; i <= count; i++) {
+    const label = document.createElement("label");
+    label.innerText = `${translations[currentLang].menuPerson} ${i}`;
+
+    const select = document.createElement("select");
+    select.required = true;
+    select.innerHTML = `
+      <option value="">--</option>
+      <option>${translations[currentLang].standard}</option>
+      <option>${translations[currentLang].vegetarian}</option>
+      <option>${translations[currentLang].child}</option>
+    `;
+    menuContainer.appendChild(label);
+    menuContainer.appendChild(select);
+  }
+}
+attendSelect.addEventListener("change", generateMenus);
+guestsInput.addEventListener("input", generateMenus);
+
+/* COUNTDOWN */
+const weddingDate = new Date("2026-05-30T00:00:00").getTime();
+const daysEl = days.innerText = days;
+function updateCountdown() {
+  const now = Date.now();
+  const diff = weddingDate - now;
+  if (diff < 0) return;
+  days.innerText = Math.floor(diff / 86400000);
+  hours.innerText = Math.floor(diff / 3600000) % 24;
+  minutes.innerText = Math.floor(diff / 60000) % 60;
+  seconds.innerText = Math.floor(diff / 1000) % 60;
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* SUBMIT */
+document.getElementById("rsvpForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const menus = [...menuContainer.querySelectorAll("select")].map(s => s.value);
+  if (attendSelect.value === "yes" && menus.includes("")) {
+    alert(currentLang === "ro" ? "Selectează toate meniurile." : "Please select all menus.");
+    return;
   }
 
-  function generateMenus() {
-    menuContainer.innerHTML = "";
-    menuLabel.style.display = "none";
-
-    if (attendSelect.value !== "yes") return;
-
-    const count = parseInt(guestsInput.value);
-    if (!count || count < 1) return;
-
-    menuLabel.style.display = "block";
-
-    for (let i = 1; i <= count; i++) {
-      const label = document.createElement("label");
-      label.innerText = `${translations[currentLang].menuPerson} ${i}`;
-
-      const select = document.createElement("select");
-      select.required = true;
-      select.innerHTML = `
-        <option value="">--</option>
-        <option>${translations[currentLang].standard}</option>
-        <option>${translations[currentLang].vegetarian}</option>
-        <option>${translations[currentLang].child}</option>
-      `;
-
-      menuContainer.appendChild(label);
-      menuContainer.appendChild(select);
-    }
-  }
-
-  attendSelect.addEventListener("change", generateMenus);
-  guestsInput.addEventListener("change", generateMenus);
-
-  // COUNTDOWN
-  const weddingDate = new Date("May 30, 2026 00:00:00").getTime();
-
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = weddingDate - now;
-    if (diff < 0) return;
-
-    daysEl.innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-    hoursEl.innerText = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    minutesEl.innerText = Math.floor((diff / (1000 * 60)) % 60);
-    secondsEl.innerText = Math.floor((diff / 1000) % 60);
-  }, 1000);
-
-    const form = document.getElementById("rsvpForm");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const name = document.querySelector("input[type='text']").value;
-    const attend = attendSelect.value;
-    const guests = guestsInput.value;
-
-    const menuSelections = [];
-    document.querySelectorAll("#menuContainer select").forEach(sel => {
-      menuSelections.push(sel.value);
-    });
-
-    if (attend === "yes" && menuSelections.includes("")) {
-      alert(currentLang === "ro"
-        ? "Te rugăm să selectezi toate meniurile."
-        : "Please select all menus."
-      );
-      return;
-    }
-
-    const data = {
-      name: name,
-      attend: attend,
-      guests: guests,
-      menus: menuSelections.join(", "),
-      message: document.querySelector("textarea").value
-    };
-
-    await fetch("https://script.google.com/macros/s/AKfycbzHQTmidXQz4kYj7Vd9nH7i1Bdx6DlBZ0cOZce8qf2R1cg87aT6j3-ZorcV1FHP_TaKTA/exec", {
-      method: "POST",
-      body: JSON.stringify(data)
-    });
-
-    alert(currentLang === "ro"
-      ? "Mulțumim pentru confirmare!"
-      : "Thank you for your confirmation!"
-    );
-
-    form.reset();
-    menuContainer.innerHTML = "";
-    menuLabel.style.display = "none";
+  await fetch("PUNE_AICI_URL_UL_TAU_GOOGLE_SCRIPT", {
+    method: "POST",
+    body: JSON.stringify({
+      name: nameInput.value,
+      attend: attendSelect.value,
+      guests: guestsInput.value,
+      menus: menus.join(", "),
+      message: messageInput.value
+    })
   });
+
+  alert(currentLang === "ro" ? "Mulțumim!" : "Thank you!");
+  e.target.reset();
+  menuContainer.innerHTML = "";
+});
 </script>
+
+</body>
+</html>
