@@ -168,6 +168,7 @@
 
     <!-- FORM -->
     <form>
+      <form id="rsvpForm">
       <label id="nameLabel">Nume și prenume</label>
       <input type="text" required>
 
@@ -320,4 +321,49 @@
     minutesEl.innerText = Math.floor((diff / (1000 * 60)) % 60);
     secondsEl.innerText = Math.floor((diff / 1000) % 60);
   }, 1000);
+
+    const form = document.getElementById("rsvpForm");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.querySelector("input[type='text']").value;
+    const attend = attendSelect.value;
+    const guests = guestsInput.value;
+
+    const menuSelections = [];
+    document.querySelectorAll("#menuContainer select").forEach(sel => {
+      menuSelections.push(sel.value);
+    });
+
+    if (attend === "yes" && menuSelections.includes("")) {
+      alert(currentLang === "ro"
+        ? "Te rugăm să selectezi toate meniurile."
+        : "Please select all menus."
+      );
+      return;
+    }
+
+    const data = {
+      name: name,
+      attend: attend,
+      guests: guests,
+      menus: menuSelections.join(", "),
+      message: document.querySelector("textarea").value
+    };
+
+    await fetch("https://script.google.com/macros/s/AKfycbzHQTmidXQz4kYj7Vd9nH7i1Bdx6DlBZ0cOZce8qf2R1cg87aT6j3-ZorcV1FHP_TaKTA/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
+    });
+
+    alert(currentLang === "ro"
+      ? "Mulțumim pentru confirmare!"
+      : "Thank you for your confirmation!"
+    );
+
+    form.reset();
+    menuContainer.innerHTML = "";
+    menuLabel.style.display = "none";
+  });
 </script>
