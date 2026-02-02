@@ -6,22 +6,25 @@
 <title>Bogdan & Irina</title>
 
 <style>
-    /* FUNDAL GENERAL */
     body {
         margin: 0;
         font-family: "Helvetica", Arial, sans-serif;
         color: #fff;
-        background-image: url("hero.jpg");
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
     }
 
-    /* STRAT SEMI-TRANSPARENT PENTRU LIZIBILITATE */
+    /* FUNDAL FIX */
+    .bg {
+        background-image: url("Hero.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+
     .overlay {
         background: rgba(0, 0, 0, 0.55);
-        min-height: 100vh;
         padding-bottom: 50px;
+        width: 100%;
     }
 
     /* HERO */
@@ -56,6 +59,12 @@
         border-radius: 12px;
     }
 
+    #intro {
+        text-align: center;
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
     /* COUNTDOWN */
     .countdown {
         display: flex;
@@ -68,6 +77,26 @@
         font-size: 32px;
         font-weight: bold;
         display: block;
+    }
+
+    /* SECTIUNI LOCAȚII */
+    .event-box {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .event-box h3 {
+        margin: 0 0 10px 0;
+        font-size: 20px;
+    }
+
+    .event-box a {
+        color: #ffd;
+        font-weight: bold;
+        text-decoration: underline;
     }
 
     /* FORMULAR */
@@ -121,6 +150,7 @@
 </head>
 
 <body>
+<div class="bg">
 <div class="overlay">
 
     <!-- HERO -->
@@ -146,6 +176,28 @@
             <div><span id="seconds">0</span>SEC</div>
         </div>
 
+        <!-- SECTIUNI EVENIMENTE -->
+        <div class="event-box">
+            <h3>Cununia religioasă</h3>
+            <p>Ora 18:00</p>
+            <a href="https://maps.app.goo.gl/ThFcfZoGju26NM539" target="_blank">
+                Parohia Cotroceni, Răzoare
+            </a>
+        </div>
+
+        <div class="event-box">
+            <h3>Petrecerea</h3>
+            <p>Ora 20:00</p>
+            <a href="https://maps.app.goo.gl/WFwNQNtU8pQUBTyX8" target="_blank">
+                Restaurant Excellence
+            </a>
+        </div>
+
+        <!-- TEXT CONFIRMARE MUTAT -->
+        <footer>
+            Vă rugăm să confirmați până la 1 mai 2026
+        </footer>
+
         <!-- FORMULAR -->
         <form id="rsvpForm">
             <label>Nume și prenume</label>
@@ -169,10 +221,8 @@
             <button type="submit">Confirmă prezența</button>
         </form>
 
-        <footer>
-            Vă rugăm să confirmați până la 1 mai 2026
-        </footer>
     </div>
+</div>
 </div>
 
 <script>
